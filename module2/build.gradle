@@ -1,0 +1,6 @@
+
+def libs = rootProject.ext.libs
+
+dependencies {
+    testCompile libs.junit
+}

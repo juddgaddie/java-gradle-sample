@@ -1,0 +1,5 @@
+Map libs = [
+        'junit':'junit:junit:4.12'
+]
+
+rootProject.ext.libs = libs
