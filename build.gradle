@@ -15,6 +15,22 @@ subprojects {
 
     apply from: "$rootDir/gradle/deps.gradle"
 
+
+    task unitTest(type: Test) {
+        exclude "**/*AcceptanceTest.class"
+        exclude "**/*IntegrationTest.class"
+    }
+
+    task integrationTest(type: Test) {
+        include "**/*IntegrationTest.class"
+    }
+
+    task daoTest(type: Test) {
+        include "**/*DaoTest.class"
+        // Do not cache test results
+        outputs.upToDateWhen { return false }
+    }
+
     repositories {
         mavenCentral()
     }

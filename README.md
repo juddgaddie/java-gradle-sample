@@ -2,4 +2,3 @@ Java Gradle Sample [![Build Status](https://travis-ci.org/juddgaddie/java-gradle
 
 Gradle Model Build
 
-WIP...
