@@ -3,6 +3,8 @@ allprojects {
     apply plugin: 'eclipse'
     defaultTasks 'build', 'check'
 
+    version = System.env.BUILD_NUMBER ?: 'SNAPSHOT'
+
 }
 
 subprojects {
