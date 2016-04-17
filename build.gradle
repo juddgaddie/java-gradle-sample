@@ -1,14 +1,15 @@
 allprojects {
     apply plugin: 'idea'
     apply plugin: 'eclipse'
-
-
+    defaultTasks 'build', 'check'
 
 }
 
 subprojects {
     apply plugin: 'checkstyle'
     apply plugin: 'java'
+    apply plugin: 'findbugs'
+
 
     apply from: "$rootDir/gradle/deps.gradle"
 
@@ -16,11 +17,17 @@ subprojects {
         mavenCentral()
     }
 
-    task myTask << {
-        println project.name + 'hello'
+    checkstyle {
+        configFile = new File(rootDir, "config/checkstyle.xml")
     }
 
+    configurations.checkstyle {
+        transitive = true
+    }
 
+    configurations.findbugs {
+        transitive = true
+    }
 
 }
 
@@ -29,3 +36,4 @@ subprojects {
 configurations.all {
     transitive = false
 }
+

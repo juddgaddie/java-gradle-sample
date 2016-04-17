@@ -6,7 +6,7 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 
 
-public class ModuleMainTest {
+public class Module2MainTest {
 
     @Test
     public void testName() throws Exception {
