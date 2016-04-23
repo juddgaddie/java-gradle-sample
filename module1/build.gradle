@@ -1,0 +1,3 @@
+shadowJar {
+    manifest.attributes('Main-Class': 'net.gaddie.mod1.Module1Main')
+}

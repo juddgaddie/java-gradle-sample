@@ -1,7 +1,14 @@
+buildscript {
+    repositories { jcenter() }
+    dependencies {
+        classpath 'com.github.jengelman.gradle.plugins:shadow:1.2.3'
+    }
+}
+
 allprojects {
     apply plugin: 'idea'
     apply plugin: 'eclipse'
-    defaultTasks 'build', 'check'
+    defaultTasks 'check', 'build', 'shadowJar'
 
     version = System.env.BUILD_NUMBER ?: 'SNAPSHOT'
 
@@ -11,10 +18,15 @@ subprojects {
     apply plugin: 'checkstyle'
     apply plugin: 'java'
     apply plugin: 'findbugs'
+    apply plugin: 'com.github.johnrengelman.shadow'
 
 
     apply from: "$rootDir/gradle/deps.gradle"
 
+    shadowJar {
+        destinationDir = new File("$rootDir/artifacts/${project.name}/")
+        classifier = 'uber'
+    }
 
     task unitTest(type: Test) {
         exclude "**/*AcceptanceTest.class"
